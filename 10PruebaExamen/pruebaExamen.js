@@ -24,6 +24,3 @@ Integración de contenido:
 
 */
 
-misMascotas=[]
-
-console.log(8-15==8||7>6=-2);
