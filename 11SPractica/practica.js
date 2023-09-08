@@ -250,14 +250,49 @@ function generarID(arr=arrayCuentaas)
 }
 generarID()
 
-function buscarPorId(arr=arrayCuentaas,id)
+function buscarPorId(arr,id)
 {
+    let buscado=null;
     for(let cuenta of arr)
     {
-
+        if(cuenta.id==id)
+        {
+            buscado=cuenta;
+        }
     }
+    return buscado;
 
 }
+//console.log(buscarPorId(arrayCuentaas,6));
+
+function filtrarPorSaldos(arr,saldo)
+{
+    let cuentasDebjoSaldo=[];
+    for(let cuenta of arr)
+    {
+        if(cuenta.saldo<saldo)
+        {
+            cuentasDebjoSaldo.push(cuenta);
+        }
+    }
+    return cuentasDebjoSaldo;
+}
+//console.log(filtrarPorSaldos(arrayCuentaas,2000));
+
+function incrementarSaldo(arr,id,saldo)
+{
+    let valorRetorno=undefined;
+    let cuentaIncrementada=buscarPorId(arr,id);
+    if(cuentaIncrementada!=null)
+    {
+        cuentaIncrementada.saldo=cuentaIncrementada.saldo+saldo;
+        valorRetorno=cuentaIncrementada;
+    }
+    
+    return valorRetorno;
+}
+
+console.log(incrementarSaldo(arrayCuentaas,6,1000));
 
 /*
 
@@ -431,3 +466,52 @@ let vehiculo = {marca:'smart',modelo:'fortwo',anio:2013,precio:150000,calculaImp
 }}
 
 //console.log(vehiculo.calculaImpuesto())
+
+
+
+
+// posibilidades para el examen
+
+// function verificacionDeTiposDeDatos(valor1, valor2) {
+//     let tipval1 = valor1.constructor;
+//     let tipval2 = valor2.constructor;
+//     if (tipval1 === tipval2) {
+//         return "Son del mismo tipo";
+//     } else {
+//         return "No son del mismo tipo";
+//     }
+// } fucking constructor
+
+
+// function verificacionDeTiposDeDatos(dato1, dato2) {
+//     if (((dato1 === true || dato1 === false) && (dato2 === true || dato2 === false)) || ((dato1 === "true" || dato1 === "false") && (dato2 === "true" || dato2 === "false"))){
+//      return "Son del mismo tipo";
+//    } else {
+//      return "No son del mismo tipo";
+//    }
+//  }
+
+// yo hice esta chanchada
+
+
+// yo me base en que decia que solo se le enviaria String  o Booleano,    entonces como son 2 opciones decarte el string usando una propiedad como el .length , y salio:
+
+// const verificacionDeTiposDeDatos = function (val1, val2) {
+//   // nos guiamos de la propiedad .length , que es propia de los arrayObject como los String, pero que no se presenta en boolean
+//   let verifier = val1.length
+//     ? val2.length
+//       ? "Son"
+//       : "No son"
+//     : val2.length
+//     ? "No son"
+//     : "Son";
+//   return `${verifier} del mismo tipo`;
+// };
+
+// Mi favorita
+// if ((String(valor1) === valor1 && String(valor2) === valor2) ||
+//     (Boolean(valor1) === valor1 && Boolean(valor2) === valor2)) {
+//     return "Son del mismo tipo";
+// } else {
+//     return "No son del mismo tipo";
+// }
